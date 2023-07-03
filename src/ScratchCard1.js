@@ -1,13 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-const DrawingCanvas = () => {
+const ScratchCard1 = () => {
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
   const [isRevealed, setIsRevealed] = useState(false);
 
   // Scratch Card
   useEffect(() => {
-    // if (!autoPlay) {
     const canvas = canvasRef.current;
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
@@ -16,8 +15,7 @@ const DrawingCanvas = () => {
     ctxRef.current = ctx;
 
     const scratchCard = new Image();
-    scratchCard.src =
-      'http://159.223.51.198:5000/scratchcard/1688120057551-image-subtract-3.png';
+    scratchCard.src = '../assets/images/scratch-cards/card-play.png';
 
     scratchCard.onload = () => {
       ctx.drawImage(scratchCard, 0, 0, canvas.width, canvas.height);
@@ -96,7 +94,6 @@ const DrawingCanvas = () => {
       canvas.removeEventListener('mouseup', endScratch);
       canvas.removeEventListener('touchend', endScratch);
     };
-    // }
   }, []);
 
   return (
@@ -142,7 +139,7 @@ const DrawingCanvas = () => {
               <div className="card-body px-5 py-4">
                 <div className="row">
                   <div
-                    key={index}
+                    // key={index}
                     className="col-4 d-flex justify-content-center align-items-center mb-4"
                   >
                     <span className={`scratch-btn active`}>543</span>
@@ -170,4 +167,4 @@ const DrawingCanvas = () => {
   );
 };
 
-export default DrawingCanvas;
+export default ScratchCard1;
